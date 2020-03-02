@@ -1,14 +1,14 @@
 .idea
-.sqlite3
+*.sqlite3
 .sql
 .venv
 venv
-env
+.env
 ENV/ 
 env.bak/ 
 venv.bak/ 
 *pyc
-.vscode/*
+.vscode/
 .vscode/* 
 !.vscode/settings.json 
 !.vscode/tasks.json 
