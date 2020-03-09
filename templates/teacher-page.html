@@ -1,0 +1,18 @@
+<html>
+
+    <head>
+        <title>Study Way</title>
+    </head>
+    <body>
+        <ul>
+        {%for pf in professor%}
+            
+            <li>
+                <p>{{pf}}</p>
+                <p><a href="teacher-update/{{pf.user_id}}">Atualizar Dados</a></p>
+            </li>
+            
+        {% endfor %}
+        </ul>
+    </body>
+</html>
