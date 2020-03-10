@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.http import HttpResponse
-from .forms import ProfessorForm
+from .forms import ProfessorForm , StudentForm
 from .models import Professor
 #@login_required
 def register_teacher(request):
@@ -29,3 +29,15 @@ def update_teacher(request,id):
         return redirect('teacher-page')
     data['form'] = form
     return render(request, 'register-teacher.html', data)  
+
+def register_student(request):
+    data={}
+    
+    form = StudentForm(request.POST or None )
+
+    if form.is_valid():
+        form.save()
+        return redirect('register-student')
+    data['form']= form
+    return render(request, 'register-student.html' , data)
+        
