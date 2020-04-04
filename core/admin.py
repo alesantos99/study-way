@@ -1,7 +1,18 @@
 from django.contrib import admin
 
-from .models import Professor ,Student
+from .models import Professor ,Student,User, Profile
 # Register your models here.
+
+class ProfileAdmin(admin.ModelAdmin):
+    list_display =['user']
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display =['first_name', 'last_name','email','phone','photo','type_user']
+
+    list_filter = ['username','first_name','type_user']
+
+    search_fields= ['username','first_name', 'last_name','photo', 'type_user']
 
 
 
@@ -22,3 +33,9 @@ class StudentAdmin(admin.ModelAdmin):
 admin.site.register(Professor,ProfessorAdmin)
 
 admin.site.register(Student,StudentAdmin)
+
+
+admin.site.register(User,UserAdmin)
+
+
+admin.site.register(Profile,ProfileAdmin)

@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from core.views import register_teacher,list_teacher,update_teacher,register_student
+from core.views import register_teacher,list_teacher,update_teacher,register_student,signup,signin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView as loginTeacher
 from django.contrib.auth.views import LogoutView as logoutTeacher
 urlpatterns = [
-    path('', register_teacher,name="register-teacher"),
+    path('', signup, name='signup'),
+    path('signin', signin, name='signin'),
+    path('register', register_teacher,name="register-teacher"),
     path('teacher-page', list_teacher,name="teacher-page"),
     path('teacher-update/<str:id>',update_teacher,name="teacher-update"),
-    path('login-teacher/', loginTeacher.as_view(),name="login"),
+    path('accounts/',include('django.contrib.auth.urls')),
     path('logout-teacher/', logoutTeacher.as_view(),name="logout"),
     path('register-student',register_student,name="register-student"),
     path('admin/', admin.site.urls),
