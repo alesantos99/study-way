@@ -1,7 +1,10 @@
+import base64
+
 from django.db import models
 from django.contrib.auth.models import  AbstractBaseUser, UserManager
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 
 class User(AbstractBaseUser):
    
@@ -40,6 +43,7 @@ class User(AbstractBaseUser):
     def getTypeUser(self):
         return self.type_user    
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -51,65 +55,107 @@ class Profile(models.Model):
             u = Profile.objects.create(user=instance)
         instance.profile.save()
         Profile.objects.create_user(User.username, User.password, User.email.lowercase())
-class Professor(models.Model):
+
+
+class Theme(models.Model):
     
-    user_id = models.CharField(max_length = 100, null = False,blank = False, primary_key = True)
+    def get_theme(self):
+        return self.name
 
-    password = models.CharField(max_length = 100, null= False, blank= False)
+    name = models.CharField(max_length=200,null= False, blank = False, default= "------")
 
-    first_name = models.CharField(max_length = 100, null= False, blank= False)
+    description = models.CharField(max_length=500,null= True, blank = True)
 
-    last_name = models.CharField(max_length = 100, null= False, blank= False)
-
-
-
-    email = models.EmailField( max_length= 100, null = False, blank = False)
-    
-    telefone = models.CharField(max_length = 100, null= False, blank= False)
+    weight = models.IntegerField(null=False,blank= False, default= 0)
 
 
-    
-    photo =  models.ImageField(null= True, blank=True,upload_to='professors')
-    #area = models.ForeignKey(Area,  on_delete = models.CASCADE)
 
-    class Meta:
 
-        verbose_name_plural = 'Professors'
-    def __str__(self):
+class Study(models.Model):
 
-        return self.user_id
+    user = models.ForeignKey("User", on_delete = models.CASCADE, related_name = "studies")
 
-    def getFullName(self):
+    name = models.CharField(null = False, blank= False, max_length= 100)
 
-        return self.first_name + ' '+  self.last_name
+    description = models.CharField(null= True, blank = True, max_length = 500)
 
-class Student(models.Model):
-    user_id = models.CharField(max_length = 100, null = False,blank = False, primary_key = True)
+    themes = models.ManyToManyField(Theme, null = True)
 
-    password = models.CharField(max_length = 100, null= False, blank= False)
+
+
+class Question(models.Model):
+
+    name = models.CharField(max_length = 100, null= False, blank= False)    
+
+    question_statement = models.CharField(max_length = 1000, null= False, blank= False)    
 
     
-    first_name = models.CharField(max_length=100, null = False, blank=False)
+class Option(models.Model):
     
-    last_name = models.CharField(max_length=100, null = False, blank=False)
+    question = models.ForeignKey(Question, on_delete = models.CASCADE)
     
-    email = models.EmailField( max_length= 100, null = False, blank = False) 
+    label = models.CharField(max_length = 50, null= False, blank= False)    
     
-    telefone = models.CharField(max_length = 100, null= False, blank= False)
+    description = models.CharField(max_length = 500, null= False, blank= False)    
+
+    is_correct = models.BooleanField(null = False, blank= False, default = False)
+
+class Test(models.Model):
+
+    name = models.CharField(null = False, blank= False, max_length= 100)
+
+    description = models.CharField(null= True, blank = True, max_length = 500)
+
+    total_score = models.IntegerField(null=False,blank= False)
     
-    photo =  models.ImageField(null= True, blank=True,upload_to='students')
-    #area = models.ForeignKey(Area,  on_delete = models.CASCADE)
+    number_question = models.IntegerField(null=False,blank= False)
 
-   
-    class Meta:
+    users = models.ManyToManyField(User)
 
-        verbose_name_plural = 'Students'
-    def __str__(self):
+    questions = models.ManyToManyField(Question)
 
-        return self.user_id
+class TestUser(models.Model):
 
-    def getFullName(self):
-
-        return self.first_name + ' '+  self.last_name
-
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
     
+    test = models.ForeignKey(Test, on_delete = models.CASCADE)
+    
+    user_score = models.IntegerField(null=False,blank= False)
+
+    correct_answers = models.IntegerField(null=False,blank= False)
+
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
+    completed = models.BooleanField(default=False)
+
+
+class UserQuestion(models.Model):
+
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    
+    question = models.ForeignKey(Question, on_delete = models.CASCADE)
+    
+    answer = models.CharField(max_length = 50,null=False,blank= False)
+
+    correct_answer = models.CharField(max_length = 50, null=False,blank= False)
+
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
+    is_done = models.BooleanField(default=False)
+
+class File(models.Model):
+    
+    filename = models.CharField(max_length = 100,null=False,blank= False)
+    extension = models.CharField(max_length = 50,null=False,blank= False)
+
+    _data = models.TextField(
+            db_column='data',
+            blank=True)
+
+    def set_data(self, data):
+        self._data = base64.encodestring(data)
+
+    def get_data(self):
+        return base64.decodestring(self._data)
+
+    data = property(get_data, set_data)

@@ -4,8 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 # Create your views here.
 from django.http import HttpResponse
-from .forms import ProfessorForm , StudentForm,SingUpForm
-from .models import Professor,User
+from .models import User,  Study, Theme
 
 def signup(request):
     if request.method == 'POST':
@@ -57,8 +56,18 @@ def signin(request):
         return render(request, 'login.html', {'form': form})
 
 
+def create_study(request):
+    
+    data = {}
+
+def list_user(request,id):
+
+    user = get_object_or_404(User,pk=id)
+  
+    return render(request, 'userpage.html',{'user':user})
+
 #@login_required
-def register_teacher(request):
+"""def register_teacher(request):
     data = {}   
      
     form = ProfessorForm(request.POST or None)
@@ -69,6 +78,16 @@ def register_teacher(request):
         return redirect('register-teacher')
     data['form'] = form
     return render(request, 'register-teacher.html', data)   
+
+
+
+def list_study(request, id):
+    
+    studies = Stduy.objects.filter(user = id)
+
+    return render(request, 'studiespage.html',{'studies':studies})
+
+
 
 def list_teacher(request):
 
@@ -95,4 +114,4 @@ def register_student(request):
         return redirect('register-student')
     data['form']= form
     return render(request, 'register-student.html' , data)
-        
+        """

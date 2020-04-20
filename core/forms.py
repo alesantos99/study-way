@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Professor, Student, User
+from .models import User
 from django.contrib.auth.forms import UserCreationForm
 
 USER_CHOICES =( 
@@ -23,23 +23,7 @@ class SingUpForm(UserCreationForm):
     type_user = forms.ChoiceField(label = 'Tipo do usuário', choices= USER_CHOICES)
 
     class Meta:
+        
         model = User
             
         fields = ['username','first_name', 'last_name', 'email', 'phone', 'type_user','password1','password2']
-    
-class ProfessorForm(ModelForm):
-
-    class Meta:
-
-        model = Professor
-
-        fields = ['first_name','last_name', 'email','telefone','user_id','password','photo']
-
-
-class StudentForm(ModelForm):
-
-    class Meta:
-
-        model = Student
-
-        fields = ['first_name','last_name', 'email','telefone','user_id','password','photo']
