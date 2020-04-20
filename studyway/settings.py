@@ -140,7 +140,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
     '/var/www/static/',
 ]
-
+os.makedirs(STATIC_ROOT, exist_ok=True)
+os.makedirs(STATIC_DIRS, exist_ok=True)
 MEDIA_URL ='/media/'
 
 MEDIA_ROOT =  'mediafiles'
