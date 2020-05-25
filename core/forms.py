@@ -1,6 +1,6 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from django import forms
-from .models import User
+from .models import User, Test, Question, Option, TestUser, UserQuestion
 from django.contrib.auth.forms import UserCreationForm
 
 USER_CHOICES =( 
@@ -20,10 +20,49 @@ class SingUpForm(UserCreationForm):
     phone = forms.CharField( label = 'Telefone', max_length=100, required=True,help_text = 'Obrigatório')
     
 
-    type_user = forms.ChoiceField(label = 'Tipo do usuário', choices= USER_CHOICES)
-
+    
     class Meta:
         
         model = User
             
-        fields = ['username','first_name', 'last_name', 'email', 'phone', 'type_user','password1','password2']
+        fields = ['username']
+
+
+class TestForm(forms.Form):
+    
+    quest  = Question.objects
+    OP  = (('a','A'))
+    def __init__(self, question,*args, **kwargs):
+        
+        quest = question
+        options = list()
+        for o in quest.options:
+
+            options.append((str(o.label), str(o.description)))    
+        
+        return super(TestForm, self).__init__(*args,question, **kwargs)
+    
+  
+
+   
+   
+    user = forms.CharField( label = 'Usuário', max_length=100, required=True, help_text = 'Obrigatório')
+
+    question = forms.CharField( label = 'Questão', max_length=100, required=True, help_text = 'Obrigatório') 
+
+    #answer = forms.MultipleChoiceField(choices=options)
+   
+    class Meta:
+
+        model = UserQuestion
+            
+        fields = ['user','question']
+
+    
+
+    
+        
+        
+    
+    
+   

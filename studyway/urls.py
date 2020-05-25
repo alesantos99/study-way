@@ -22,8 +22,17 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView as loginTeacher
 from django.contrib.auth.views import LogoutView as logoutTeacher
 urlpatterns = [
-    path('', signup, name='signup'),
-    #path('userpage/<str:id>', list_user, name='userpage'),
+    path('', home, name='home'),
+    path('userpage/<str:id>', list_user, name='userpage'),
+    path('tests/<str:id>', showtests, name='tests'),
+    path('test/<str:id>/<str:username>', showtestdetail, name='test'),
+    path('testuser/<str:id>/<str:username>', startest, name='testuser'),
+    path('finishedtest/<str:id>/<str:username>', finishedtest, name='finishedtest'),
+    path('repeatest/<str:id>/<str:username>', repeatest, name='repeatest'),
+    path('signup', signup, name='signup'),
+    path('profiles/user', usepage, name='profiles/user'),
+   
+
     #path('studiespage/<str:id>', list_study,name="studiespage"),
     path('signin', signin, name='signin'),
     #path('register', register_teacher,name="register-teacher"),

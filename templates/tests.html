@@ -120,77 +120,40 @@
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" >
       
       <div class="container">
-         <div class="row">
-             <div class="col-lg-3" style="border-right: groove;">
+         <div class="row mb-5 justify-content-center text-center">
+          
+          <div class="col-lg-4 mb-5">
+            <h1 class="section-title-underline mb-5">
+              <span>Testes Disponíveis</span>            
+            </h2>
 
-                  <div class="profile-usertitle">
-                    <div class="profile-header-container">   
-                      <div class="profile-header-img text-center">
-                              <img class="img-circle" src="{%static 'images\download.png' %}" width="40%" height="40%" />
-                              <!-- badge -->
-                              <div class="rank-label-container">
-                                  <span class="label label-default rank-label">{{user.username}}</span>
-                              </div>
-                          </div>
-                      </div> 
-                     </div>
-                        <div class="site-mobile-menu-close mt-3 text-info text-responsive">
-                            <span class="icon-home2 js-menu-toggle"></span>
-                            <a href="index.html"class = "text-info">Home</a>
-                        </div>
-                      
-                        <div class="site-mobile-menu-close mt-3 text-info">
-                            <span class=" icon-settings js-menu-toggle"></span>
-                            <a href="index.html"class = "text-info">Atualizar Dados</a>
-                        </div>
-                        
-                        <div class="site-mobile-menu-close mt-3 text-info">
-                            <span class=" icon-sign-out js-menu-toggle"></span>
-                            <a href="{%url 'logout' %}"class = "text-info">Log Out</a>
-                        </div>
-                          
-                </div>
-
-                  <div class="col-lg-3 col-md-6 mb-4 mb-lg-0" style="padding-top: 20%">
-
-                    <div class="feature-1">
-                          <div class="icon-wrapper">
-                             <span class="icon-graduation-cap text-white"></span>
-                          </div>
-                        <div class="feature-1-content">
-                          <h2>Inciar Estudo</h2>
-                          <p><a href="#"  class="btn btn-info px-4 rounded-0">Clique Aqui</a></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 ol-md-6 mb-4 mb-lg-0" style="padding-top: 20%">
-
-                    <div class="feature-1">
-                          <div class="icon-wrapper">
-                             <span class=" icon-list-ol text-white"></span>
-                          </div>
-                        <div class="feature-1-content">
-                          <h2>Realizar Simulado</h2>
-                          <p><a href="{%url 'tests' user.username%}" class="btn btn-info px-4 rounded-0">Clique Aqui</a></p>
-                        </div>
-                      </div>
-                    </div>  
-
-                    <div class="col-lg-3 ol-md-6 mb-4 mb-lg-0" style="padding-top: 20%">
-
-                    <div class="feature-1">
-                          <div class="icon-wrapper">
-                             <span class=" icon-bar-chart text-white"></span>
-                          </div>
-                        <div class="feature-1-content">
-                          <h2>Feedback</h2>
-                          <p><a href="#" class="btn btn-info px-4 rounded-0">Clique Aqui</a></p>
-                        </div>
-                      </div>
-                    </div>  
-             
           </div>
-          </div>  
+        </div>
+        <div class="row mb-5 justify-content-center">
+        
+          
+        <div class="col-lg-10 mb-5">
+
+             {%for t in tests%}
+              
+            <br>          
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{t.name}}</h5>
+                
+                  <p class="card-text">{{t.description}}</p>
+                  
+                  <a href="{%url 'test' t.name user.username%}" class="btn btn-info">Detalhes...</a>
+                </div>
+            </div>
+
+                  
+              
+            
+             {%endfor%}
+
+        </div>
+        </div>  
       </div>      
 
   </div>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-	<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css'%}">
 
   <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
@@ -120,77 +120,85 @@
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" >
       
       <div class="container">
-         <div class="row">
-             <div class="col-lg-3" style="border-right: groove;">
+         
+        <div class="row mb-5 justify-content-center ">
+         <h2 class="section-title-underline mb-5">
+              <span>{{test.name}}</span>            
+            </h2>           
+          
+        <div class="col-lg-8 mb-5 text-justify jumbotron">
 
-                  <div class="profile-usertitle">
-                    <div class="profile-header-container">   
-                      <div class="profile-header-img text-center">
-                              <img class="img-circle" src="{%static 'images\download.png' %}" width="40%" height="40%" />
-                              <!-- badge -->
-                              <div class="rank-label-container">
-                                  <span class="label label-default rank-label">{{user.username}}</span>
-                              </div>
-                          </div>
-                      </div> 
-                     </div>
-                        <div class="site-mobile-menu-close mt-3 text-info text-responsive">
-                            <span class="icon-home2 js-menu-toggle"></span>
-                            <a href="index.html"class = "text-info">Home</a>
-                        </div>
-                      
-                        <div class="site-mobile-menu-close mt-3 text-info">
-                            <span class=" icon-settings js-menu-toggle"></span>
-                            <a href="index.html"class = "text-info">Atualizar Dados</a>
-                        </div>
-                        
-                        <div class="site-mobile-menu-close mt-3 text-info">
-                            <span class=" icon-sign-out js-menu-toggle"></span>
-                            <a href="{%url 'logout' %}"class = "text-info">Log Out</a>
-                        </div>
-                          
-                </div>
+            {% load bootstrap %}      
+            {% block content %}
+                
+            <table class="table">
+		    		
+		    			<tbody>
+		        			<tr>
+		          				<th>Número de Questões</th>
+		            			<td>{{test.number_question}}</td>
+		           
+		        			</tr>
+					        <tr>
+					          	<th>Pontuação Total</th>
+					            <td>{{test.total_score}}</td>
+					          
+					        </tr>
+					        <tr>
+						        <th>Usuário</th>
+						        <td>{{user.username}}</td>
+						           
+					        </tr>
+                            {%for t in testuser.all%}
 
-                  <div class="col-lg-3 col-md-6 mb-4 mb-lg-0" style="padding-top: 20%">
+                                <tr>
+                                    <th>Pontuação do Usuário</th>
+                                    
+                                    <td>{{t.user_score}}/{{test.total_score}}</td>
+                                        
+                                </tr>
+					            <tr>
+					        
+						            <th>Questões certas</th>
+						        
+						            <td>{{t.correct_answers}}/{{test.number_question}}</td>
+						        
+					            </tr>
+					        
+                            
+                            {%endfor%}
+            
+            		        
+		    			</tbody>
+					</table>
 
-                    <div class="feature-1">
-                          <div class="icon-wrapper">
-                             <span class="icon-graduation-cap text-white"></span>
-                          </div>
-                        <div class="feature-1-content">
-                          <h2>Inciar Estudo</h2>
-                          <p><a href="#"  class="btn btn-info px-4 rounded-0">Clique Aqui</a></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 ol-md-6 mb-4 mb-lg-0" style="padding-top: 20%">
-
-                    <div class="feature-1">
-                          <div class="icon-wrapper">
-                             <span class=" icon-list-ol text-white"></span>
-                          </div>
-                        <div class="feature-1-content">
-                          <h2>Realizar Simulado</h2>
-                          <p><a href="{%url 'tests' user.username%}" class="btn btn-info px-4 rounded-0">Clique Aqui</a></p>
-                        </div>
-                      </div>
-                    </div>  
-
-                    <div class="col-lg-3 ol-md-6 mb-4 mb-lg-0" style="padding-top: 20%">
-
-                    <div class="feature-1">
-                          <div class="icon-wrapper">
-                             <span class=" icon-bar-chart text-white"></span>
-                          </div>
-                        <div class="feature-1-content">
-                          <h2>Feedback</h2>
-                          <p><a href="#" class="btn btn-info px-4 rounded-0">Clique Aqui</a></p>
-                        </div>
-                      </div>
-                    </div>  
-             
-          </div>
-          </div>  
+            
+           
+            {% endblock %}
+       
+            
+            
+        
+        </div>
+       
+        </div>  
+        <div class = "row mb-5 justify-content-center ">
+            <div class = "col-lg-8 mb-5">
+                {% if teststarted == True %}
+                <p class="lead">
+                		<a class="btn btn-info btn-lg" href="{%url 'repeatest' test.name user.username%}" role="button">Refazer Teste</a>
+                </p>
+		              
+            {% else %}
+                <p class="lead">
+                	<a class="btn btn-info btn-lg" href="{%url 'testuser' test.name user.username%}" role="button">Iniciar Teste</a>
+              	</p>
+		              
+            {%endif%}
+            
+            </div>
+        </div>
+            
       </div>      
 
   </div>

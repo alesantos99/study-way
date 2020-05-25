@@ -141,7 +141,7 @@
                     {% block content %}
                     <form method = "POST">
                       {% csrf_token %}
-                      <input type = "hidden" name ="next" value = "{{next}}">
+                      <input type = "hidden" name ="next" value = "/loginredirect">
                       <div class="row">
                         <div class="col-md-12 form-group">
                           

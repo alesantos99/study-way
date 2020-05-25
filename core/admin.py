@@ -27,11 +27,11 @@ class StudyAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display =['first_name', 'last_name','email','phone','photo','type_user']
+    #list_display =['first_name', 'last_name','email','phone','photo','type_user']
 
-    list_filter = ['username','first_name','type_user']
+   # list_filter = ['username','first_name','type_user']
 
-    search_fields= ['username','first_name', 'last_name','photo', 'type_user']
+    search_fields= ['username']
 
 
 
@@ -79,6 +79,12 @@ class FileAdmin(admin.ModelAdmin):
 
     list_filter = ['filename']
 
+
+class TestUserAdmin(admin.ModelAdmin):
+
+    list_display = ['user_score','correct_answers','timestamp', 'completed','started']
+
+
 admin.site.register(User,UserAdmin)
 admin.site.register(Profile,ProfileAdmin)
 admin.site.register(Study, StudyAdmin)
@@ -89,6 +95,7 @@ admin.site.register(UserQuestion,UserQuestionAdmin)
 admin.site.register(Option,OptionAdmin)
 admin.site.register(File,FileAdmin)
 
+admin.site.register(TestUser,TestUserAdmin)
 
 
 

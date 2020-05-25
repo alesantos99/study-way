@@ -144,9 +144,11 @@ MEDIA_URL ='/media/'
 
 MEDIA_ROOT =  'mediafiles'
 
-LOGIN_REDIRECT_URL ='/teacher-page'
+LOGIN_REDIRECT_URL ='profiles/user'
 
-LOGOUT_REDIRECT_URL ='/accounts/login'
+LOGOUT_REDIRECT_URL ='signin'
+
+AUTH_USER_MODEL = 'core.User'
 
 
 
