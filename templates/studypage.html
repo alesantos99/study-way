@@ -92,7 +92,7 @@
           
           <div class="col-lg-4 mb-5">
             <h2 class="section-title-underline mb-5">
-              <span>{{test.name}}</span>            
+              <span>Crie um novo ciclo de estudo</span>            
             </h2>
 
           </div>
@@ -106,31 +106,10 @@
             
               <form method = "POST">
                 {% csrf_token %}
-            
-                {% for q in test.questions.all %}
-                       <label>{{q.question_answer}}
-                        <br>
-
-                      <label>{{q.name}} - {{q.question_statement}}</label>
-                      
-                      {%for o in q.options%}
-                          <span class="badge badge-info badge-pill">
-                            
-                              {{o.label}}
-                            
-                            </span>
-                           <input type="radio" name="{{q.id}}" value="{{o.label}}">
-                           
-                           {{o.description}}
-                           <br>
-                           <br>
-                      {%endfor%}
-                     
-                      
-                      <br>
-                    
-                {%endfor%}
                 
+                <input type="text" name = "name" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                <input type="text" name = "description" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                 
                 <input type="submit" class="btn btn-info"value ="Salvar Respostas">
                 
              </form>

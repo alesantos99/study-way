@@ -88,58 +88,43 @@
     <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" >
       
       <div class="container">
-         <div class="row mb-5 justify-content-center text-center">
-          
-          <div class="col-lg-4 mb-5">
-            <h2 class="section-title-underline mb-5">
-              <span>{{test.name}}</span>            
-            </h2>
-
-          </div>
-        </div>
+         
         <div class="row mb-5 justify-content-center ">
         
           
-        <div class="col-lg-8 mb-5 text-justify jumbotron">
-            {% load bootstrap %}      
-            {% block content %}
-            
-              <form method = "POST">
-                {% csrf_token %}
-            
-                {% for q in test.questions.all %}
-                       <label>{{q.question_answer}}
-                        <br>
-
-                      <label>{{q.name}} - {{q.question_statement}}</label>
-                      
-                      {%for o in q.options%}
-                          <span class="badge badge-info badge-pill">
+        <div class="col-lg-8 mb-5 text-justify">
+            <h2 class="section-title-underline mb-5 text-center">
+              <span>Gabarito - {{test.name}}</span>            
+            </h2>
+            <table class="table">
+            <thead class =" text-center">
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Resposta</th>
+                </tr>
+            </thead>
+            <tbody class =" text-center">
+                {%for q in test.questions.all%}
                             
-                              {{o.label}}
-                            
-                            </span>
-                           <input type="radio" name="{{q.id}}" value="{{o.label}}">
-                           
-                           {{o.description}}
-                           <br>
-                           <br>
-                      {%endfor%}
-                     
-                      
-                      <br>
-                    
+                <tr>
+                <th scope="row">{{q.name}}</th>
+                <td>{{q.question_answer}}- {{q.question_answer_description}}</td>
+                
+                </tr>
                 {%endfor%}
-                
-                <input type="submit" class="btn btn-info"value ="Salvar Respostas">
-                
-             </form>
-            {% endblock %}
-        
+            </tbody>
+            </table>
+            <br>
+            <br>
+            <p class="lead">
+            <a class="btn btn-info btn-lg" href="{%url 'finishedtest' test.name user.username%}" role="button">Voltar</a>
+            </p>
         
         </div>
         </div>  
-      </div>      
+      </div>  
+
+          
 
   </div>
  

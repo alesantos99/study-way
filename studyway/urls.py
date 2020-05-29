@@ -29,6 +29,11 @@ urlpatterns = [
     path('testuser/<str:id>/<str:username>', startest, name='testuser'),
     path('finishedtest/<str:id>/<str:username>', finishedtest, name='finishedtest'),
     path('repeatest/<str:id>/<str:username>', repeatest, name='repeatest'),
+    path('testfeedback/<str:id>/<str:username>', testfeedback, name='testfeedback'),
+    path('studies/<str:id>', showstudies, name='studies'),
+    path('study/<str:id>', createstudy, name='study'),
+    path('studydetail/<str:id>/<str:username>', showstudy, name='studydetail'),
+    
     path('signup', signup, name='signup'),
     path('profiles/user', usepage, name='profiles/user'),
    

@@ -46,24 +46,7 @@
     </div>
 
 
-    <div class="py-2 social-icon-w" style=" background-color: #0B0B3B;">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-9 d-none d-lg-block">
-            <a href="#" class="small mr-3" style="color:#6495ED;"><span class="icon-question-circle-o mr-2"></span> Duvídas?</a> 
-            <a href="#" class="small mr-3" style="color:#6495ED;"><span class="icon-phone2 mr-2"></span> 85 998 74 65 10</a> 
-            <a href="#" class="small mr-3" style="color:#6495ED;"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a> 
-          </div>
-          <div class="col-lg-3 text-right">
-
-            <a href="login.html" class="small mr-3 " style="color:#6495ED;">
-
-              <span class="icon-unlock-alt social-icon-w" style="color:#6495ED;" ></span> Log In</a>
-            <a href="register.html" class="small btn social-icon-w px-4 py-2 rounded-0" style="color:#6495ED;"><span class="icon-users"></span> Cadastre-se</a>
-          </div>
-        </div>
-      </div>
-    </div>
+   
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
       <div class="container">
@@ -79,34 +62,19 @@
                 <li class="active">
                   <a href="index.html" class="nav-link text-left">Home</a>
                 </li>
-                <li class="has-children">
-                  <a href="about.html" class="nav-link text-left">Sobre Nós</a>
-                  <ul class="dropdown">
-                    <li><a href="teachers.html">Nosso Professores</a></li>
-                    <li><a href="about.html">Nosso Alunos</a></li>
-                  </ul>
+                 <li>
+                  <a href="{%url 'logout' %}"class = "text-info">Estudos</a>
+                </li>  
+                 <li>
+                  <a href="{%url 'tests' user.username%}"class = "text-info">Testes</a>
                 </li>
-                
-                <li>
-                  <a href="courses.html" class="nav-link text-left">Quem Somos?</a>
-                </li>
-                <li>
-                    <a href="contact.html" class="nav-link text-left">Contato</a>
-                  </li>
+                 <li >
+                  <a href="{%url 'logout' %}"class = "text-info">Log Out</a>
               </ul>                                                                                                                                                                                                                              
             </nav>
 
           </div>
-          <div class="ml-auto">
-            <div class="social-wrap">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
-
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
-            </div>
-          </div>
+         
          
         </div>
       </div>

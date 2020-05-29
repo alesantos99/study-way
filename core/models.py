@@ -90,7 +90,7 @@ class Study(models.Model):
 
     description = models.CharField(null= True, blank = True, max_length = 500)
 
-    themes = models.ManyToManyField(Theme, null = True)
+    themes = models.ManyToManyField(Theme)
 
 
 
@@ -105,11 +105,15 @@ class Question(models.Model):
         return Option.objects.filter(question = self)
     def getanswer(self):
         answer = Option.objects.get(question = self, is_correct = True)
-        return answer.label
+        return answer.label 
+    def getanswerdescription(self):
+        answer = Option.objects.get(question = self, is_correct = True)
+        return answer.description
     
     options = property(getoptions)
     
     question_answer = property(getanswer)
+    question_answer_description = property(getanswerdescription)
     
 class Option(models.Model):
     

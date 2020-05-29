@@ -57,10 +57,12 @@
           </div>
           <div class="col-lg-3 text-right">
 
-            <a href="login.html" class="small mr-3 " style="color:#6495ED;">
+            
+            <a href="{%url 'signin'%}" class="small mr-3 " style="color:#6495ED;">
 
-              <span class="icon-unlock-alt social-icon-w" style="color:#6495ED;" ></span> Log In</a>
-            <a href="register.html" class="small btn social-icon-w px-4 py-2 rounded-0" style="color:#6495ED;"><span class="icon-users"></span> Cadastre-se</a>
+              <span class="icon-unlock-alt social-icon-w" style="color:#6495ED;" ></span> LogIn</a>
+              <a href="{%url 'signup'%}" class="small btn social-icon-w px-4 py-2 rounded-0" style="color:#6495ED;"><span class="icon-users"></span> Cadastre-se</a>
+
           </div>
         </div>
       </div>
@@ -75,15 +77,15 @@
             </a>
           </div>
           <div class="mr-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
+                       <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active">
-                  <a href="index.html" class="nav-link text-left">Home</a>
+                  <a href="{%url 'home'%}" class="nav-link text-left">Home</a>
                 </li>
                 <li class="has-children">
                   <a href="about.html" class="nav-link text-left">Sobre Nós</a>
                   <ul class="dropdown">
-                    <li><a href="teachers.html">Nosso Professores</a></li>
+                  
                     <li><a href="about.html">Nosso Alunos</a></li>
                   </ul>
                 </li>

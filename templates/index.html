@@ -57,7 +57,7 @@
           </div>
           <div class="col-lg-3 text-right">
 
-            <a href="login.html" class="small mr-3 " style="color:#6495ED;">
+            <a href="{%url 'signin'%}" class="small mr-3 " style="color:#6495ED;">
 
               <span class="icon-unlock-alt social-icon-w" style="color:#6495ED;" ></span> LogIn</a>
               <a href="{%url 'signup'%}" class="small btn social-icon-w px-4 py-2 rounded-0" style="color:#6495ED;"><span class="icon-users"></span> Cadastre-se</a>
@@ -78,12 +78,12 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active">
-                  <a href="index.html" class="nav-link text-left">Home</a>
+                  <a href="{%url 'home'%}" class="nav-link text-left">Home</a>
                 </li>
                 <li class="has-children">
                   <a href="about.html" class="nav-link text-left">Sobre Nós</a>
                   <ul class="dropdown">
-                    <li><a href="teachers.html">Nosso Professores</a></li>
+                  
                     <li><a href="about.html">Nosso Alunos</a></li>
                   </ul>
                 </li>
@@ -117,9 +117,10 @@
           </div>
         </div>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          <p>
-
+        A StudyWay é uma plataforma de estudo que busca a maior eficiência na absorção do conhecimento para seus usuários.           
+       A metodologia de estudo proposta pela StudyWay e baseada nos estudos de neuro-aprendizado que comprovam como o cerebro humano aprende
+          e absorve esse conhecimente de forma permante.
+         Nosso propósito é disponibilizar um caminho para o estudo inteligente eficaz e permanete.</p>
        
       </div>
       
@@ -147,7 +148,8 @@
               </div>
               <div class="feature-1-content">
                 <h2>Personalize seu Estudo</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
+                <p class= "text-justify">Na plataforma de estudo, você poderá ajustar seus estudos a suas necessidades e tempo disponivel.
+                  Os caminhos de estudados são divididos em pequenos ciclos respeitando a capacidade do cerebro de reter o conhecimento e sua disponibilidade de tempo</p>
                 <p><a href="#" class="btn btn-info px-4 rounded-0">Saiba mais</a></p>
               </div>
             </div>
@@ -161,7 +163,8 @@
               </div>
               <div class="feature-1-content">
                 <h2>Teste seus conhecimentos</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
+                <p class= "text-justify">A StudyWay conta com um acervo de questões disponiveis para a pratica, o que chamos de estudo ativo.
+                  As testes apresentadas na plataforma podem ser de provas ou exames anteriores , ou elaborado por professores com base na matéria estudada.</p>
                 <p><a href="#" class="btn btn-info px-4 rounded-0">Saiba mais</a></p>
               </div>
             </div>
@@ -174,8 +177,9 @@
                 <span class="flaticon-blackboard text-white"></span>
               </div>
               <div class="feature-1-content">
-                <h2>Acesse o material dos professores</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
+                <h2>Acesse o material</h2>
+                <p class ="text-justify">A plataforma possibilita o acesso de materiais didaticos das mais variadas materias. 
+                Atualizaçoes de conteudos e resumos que facilitam na sua revisão dos conteudos.</p>
                 <p><a href="#" class="btn btn-info px-4 rounded-0">Saiba mais</a></p>
               </div>
             </div>
@@ -184,32 +188,8 @@
   
 
         </div>
+        
         <div class="site-section">
-          <div class="container">
-            <div class="row">
-             <div class="col-lg-5">
-              
-                <h2 class="section-title-underline">
-                  <span>Nossos Professores</span>
-                </h2>
-                <br>  
-                <img src="{%static 'images/Photo by Javier Sierra on Unsplash.jpg' %}" alt="Image" class="img-fluid mr-3">
-           
-
-              </div>
-
-              <div class="col-lg-7">
-                  <br>
-                  <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nesciunt quaerat ad reiciendis perferendis voluptate fugiat sunt fuga error totam.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
-                  <p><a href="#" class="text-info">Seja nosso colaborador</a></p>
-              </div>
-          </div>
-                 
-
-          </div>
-          </div>
-                <div class="site-section">
           <div class="container">
             <div class="row">
              <div class="col-lg-5">
@@ -225,8 +205,13 @@
 
               <div class="col-lg-7">
                   <br>
-                  <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nesciunt quaerat ad reiciendis perferendis voluptate fugiat sunt fuga error totam.</p>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
+                  <br>
+                  <p class="lead">
+                  Os alunos da StudyWay contam com a maior tecnologia de estudos do mercado, oferecemos a oportunidade unica de aprender de forma permanete , prazerosa e sem excessos.</p>
+                  <p>Nossa proposta é que os estudantes da nossa plataforma aprendam o conteudo desejado de forma semples , intuitiva e que seja uma experiencia tão fixante com andar de bicicleta
+                  
+                  </p>
+                  <br>
                   <p><a href="#" class="text-info">Seja nosso aluno</a></p>
               </div>
           </div>

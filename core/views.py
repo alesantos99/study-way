@@ -187,6 +187,15 @@ def finishedtest(request,id, username):
     
     return render(request, 'finishedtest.html', {'user':user, 'test':test, 'testuser':testuser,'accurance':accurance}) 
 
+def testfeedback(request, id,username):
+
+    user = User.objects.get(username = username)
+    
+    test = Test.objects.get(name = id)
+    
+    return render(request,'testfeedback.html',{'user':user, 'test':test})
+
+
 
 def repeatest(request,id, username):
     
@@ -282,12 +291,35 @@ def repeatest(request,id, username):
     return render(request, 'testuser.html', {'test': test, 'user':user,'content:': cont})
 
     #>>> Entry.objects.filter(blog__id=1).update(comments_on=True)
+def showstudies(request, id):
+    user = User.objects.get(username = id)
+    st = Study.objects.filter(user = id)
+    studies = list()
+    for s in st:
+        studies.append(Study.objects.get(name = s.name)) 
 
+    return render(request, 'studies.html', {'studies': studies, 'user':user})
 
-def create_study(request):
+def createstudy(request, id):
     
-    data = {}
+    user = User.objects.get(username = id) 
 
+    if(request.POST):
+        
+        study = Study()
+        study.user = user 
+        study.name = request.POST['name']
+
+        study.description = request.POST['description']
+        user.save()
+        return redirect('studies', user.username) 
+    return render(request, 'studypage.html',{'user':user} )
+def showstudy(request, id, username):
+    user = User.objects.get(username = username) 
+
+    study = Study.objects.get(name = id)
+    
+    return render(request, 'studydetail.html', {'study':study,'user': user})
 def list_user(request,id):
 
     user = get_object_or_404(User,pk=id)

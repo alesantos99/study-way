@@ -1,6 +1,6 @@
 from django.forms import ModelForm, Form
 from django import forms
-from .models import User, Test, Question, Option, TestUser, UserQuestion
+from .models import User,Study, Theme ,Test, Question, Option, TestUser, UserQuestion
 from django.contrib.auth.forms import UserCreationForm
 
 USER_CHOICES =( 
@@ -58,10 +58,8 @@ class TestForm(forms.Form):
             
         fields = ['user','question']
 
-    
+themes = Theme.objects.all()
 
-    
-        
         
     
     
